@@ -16,6 +16,15 @@
   --font-size-category: clamp(0.8rem, 2vw, 0.88rem);
   --font-size-date: clamp(0.8rem, 2vw, 0.88rem);
   --font-size-author: clamp(0.8rem, 2vw, 0.88rem);
+  --card-radius: 1.25em;
+  --card-shadow-x: 0.5em;
+  --card-shadow-y: 0.5em;
+  --card-shadow-blur: 0;
+  --card-shadow-color: var(--gray-950);
+  --card-padding-inline: clamp(1em, 4vw, 1.5em);
+  --card-padding-block: clamp(1em, 4vw, 1.5em);
+  --card-gap: clamp(1em, 3vw, 1.5em);
+  --avatar-size: 2em;
 }
 
 body {
@@ -23,39 +32,39 @@ body {
   font-family: var(--font-main);
   font-size: var(--font-size-base);
   color: var(--gray-950);
-  min-height: 100vh;
+  min-block-size: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: min(2vw, 24px);
+  gap: min(2vw, 1.5rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
   }
 }
 
 .card {
   background: var(--white);
-  border: 1px solid var(--gray-950);
-  border-radius: 1.25em;
-  box-shadow: 0.5em 0.5em 0 0 var(--gray-950);
-  max-width: min(90vw, 24em);
-  padding-inline: clamp(1em, 4vw, 1.5em);
-  padding-block: clamp(1em, 4vw, 1.5em);
+  border: 0.0625em solid var(--gray-950);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow-x) var(--card-shadow-y) var(--card-shadow-blur) 0 var(--card-shadow-color);
+  max-inline-size: min(90vw, 24em);
+  padding-inline: var(--card-padding-inline);
+  padding-block: var(--card-padding-block);
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  row-gap: clamp(1em, 3vw, 1.5em);
+  row-gap: var(--card-gap);
 }
 
 .card__image {
-  width: 100%;
-  border-radius: 0.625em;
+  inline-size: 100%;
+  border-radius: calc(var(--card-radius) * 0.5);
   margin-block-end: 1em;
 }
 
@@ -107,8 +116,8 @@ body {
 }
 
 .card__avatar {
-  width: 2em;
-  height: 2em;
+  inline-size: var(--avatar-size);
+  block-size: var(--avatar-size);
   border-radius: 50%;
 }
 
